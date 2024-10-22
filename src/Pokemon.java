@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public abstract class Pokemon
@@ -62,6 +64,13 @@ public abstract class Pokemon
     private final String type;
     private final int ID;
     private final Stats stats;
+    private static final Map<Pokedex.PokeType, Map<Pokedex.PokeType, Double>> multiplier;
+
+    static {
+        multiplier = new HashMap<>();
+
+        initializePokeTypeMultiplier(multiplier);
+    }
 
     {
         ID = idCounter;
@@ -160,6 +169,36 @@ public abstract class Pokemon
         if(hp > maxHp) {
             hp = maxHp;
         }
+    }
+
+    private static void initializePokeTypeMultiplier(final Map<Pokedex.PokeType, Map<Pokedex.PokeType, Double>> multiplier) {
+        Map<Pokedex.PokeType, Double> pokeTypeMultiplierMap;
+        pokeTypeMultiplierMap = new HashMap<>();
+
+        // Fire
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.FIRE, 0.8);
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.WATER, 0.8);
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.GRASS, 1.25);
+
+        multiplier.put(Pokedex.PokeType.FIRE, pokeTypeMultiplierMap);
+
+        pokeTypeMultiplierMap.clear();
+
+        // Water
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.FIRE, 1.25);
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.WATER, 0.8);
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.GRASS, 0.8);
+
+        multiplier.put(Pokedex.PokeType.WATER, pokeTypeMultiplierMap);
+
+        pokeTypeMultiplierMap.clear();
+
+        // Grass
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.FIRE, 0.8);
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.WATER, 1.25);
+        pokeTypeMultiplierMap.put(Pokedex.PokeType.GRASS, 0.8);
+
+        multiplier.put(Pokedex.PokeType.GRASS, pokeTypeMultiplierMap);
     }
 
     @Override
