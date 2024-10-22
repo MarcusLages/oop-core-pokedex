@@ -35,8 +35,31 @@ public class PokemonDriver {
         pokemons.get(1).useAbility(pokemons.get(2));
 
         pokemons.printPokedex();
-        pokemons.sort(Pokedex.PokeSorting.BY_TYPE);
+//        pokemons.sort(Pokedex.PokeSorting.BY_TYPE);
         pokemons.printPokedex();
+
+        Pokemon charizard;
+        Pokemon bulbasaur;
+        Pokemon squirtle;
+
+        charizard = pokemons.get(0);
+        bulbasaur = pokemons.get(1);
+        squirtle = pokemons.get(2);
+
+        BattleCapable.displayFight(charizard, charizard);
+        System.out.println(Pokemon.getMultiplier(charizard, charizard));
+
+        BattleCapable.displayFight(charizard, squirtle);
+        System.out.println(Pokemon.getMultiplier(charizard, squirtle));
+
+        BattleCapable.displayFight(charizard, bulbasaur);
+        System.out.println(Pokemon.getMultiplier(charizard, bulbasaur));
+
+        BattleCapable.displayFight(bulbasaur, squirtle);
+        System.out.println(Pokemon.getMultiplier(bulbasaur, squirtle));
+
+        BattleCapable.displayFight(squirtle, bulbasaur);
+        System.out.println(Pokemon.getMultiplier(squirtle, bulbasaur));
 
         pokemons.printStats();
     }

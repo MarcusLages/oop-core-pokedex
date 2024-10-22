@@ -190,7 +190,7 @@ public abstract class Pokemon
 
         multiplier.put(Pokedex.PokeType.FIRE, pokeTypeMultiplierMap);
 
-        pokeTypeMultiplierMap.clear();
+        pokeTypeMultiplierMap = new HashMap<>();
 
         // Water
         pokeTypeMultiplierMap.put(Pokedex.PokeType.FIRE, 1.25);
@@ -199,7 +199,7 @@ public abstract class Pokemon
 
         multiplier.put(Pokedex.PokeType.WATER, pokeTypeMultiplierMap);
 
-        pokeTypeMultiplierMap.clear();
+        pokeTypeMultiplierMap = new HashMap<>();
 
         // Grass
         pokeTypeMultiplierMap.put(Pokedex.PokeType.FIRE, 0.8);
@@ -207,6 +207,7 @@ public abstract class Pokemon
         pokeTypeMultiplierMap.put(Pokedex.PokeType.GRASS, 0.8);
 
         multiplier.put(Pokedex.PokeType.GRASS, pokeTypeMultiplierMap);
+//        System.out.println(multiplier.size());
     }
 
     @Override
