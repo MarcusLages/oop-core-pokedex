@@ -2,7 +2,7 @@ public class GrassPokemon extends Pokemon {
 
     public GrassPokemon(final String name, final int maxHp)
             throws InvalidPokemonException {
-        super(name, maxHp, "Grass");
+        super(name, maxHp, Pokedex.PokeType.GRASS);
     }
 
     @Override

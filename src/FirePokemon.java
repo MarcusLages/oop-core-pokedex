@@ -2,7 +2,7 @@ public class FirePokemon extends Pokemon {
 
     public FirePokemon(final String name, final int maxHp)
             throws InvalidPokemonException {
-        super(name, maxHp, "Fire");
+        super(name, maxHp, Pokedex.PokeType.FIRE);
     }
 
     @Override

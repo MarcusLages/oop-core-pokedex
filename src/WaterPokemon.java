@@ -2,7 +2,7 @@ public class WaterPokemon extends Pokemon {
 
     public WaterPokemon(final String name, final int maxHp)
             throws InvalidPokemonException {
-        super(name, maxHp, "Water");
+        super(name, maxHp, Pokedex.PokeType.WATER);
     }
 
     @Override

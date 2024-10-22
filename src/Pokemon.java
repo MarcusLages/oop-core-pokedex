@@ -61,7 +61,7 @@ public abstract class Pokemon
     private int level;
     private int hp;
     private final int maxHp;
-    private final String type;
+    private final Pokedex.PokeType type;
     private final int ID;
     private final Stats stats;
     private static final Map<Pokedex.PokeType, Map<Pokedex.PokeType, Double>> multiplier;
@@ -77,7 +77,7 @@ public abstract class Pokemon
         idCounter++;
     }
 
-    public Pokemon(final String name, final int maxHp, final String type)
+    public Pokemon(final String name, final int maxHp, final Pokedex.PokeType type)
             throws InvalidPokemonException {
         validateHP(maxHp);
 
@@ -110,8 +110,12 @@ public abstract class Pokemon
         return maxHp;
     }
 
-    public String getType() {
+    public Pokedex.PokeType getType() {
         return type;
+    }
+
+    public String getTypeName() {
+        return type.getType();
     }
 
     public int getID() {
@@ -169,6 +173,10 @@ public abstract class Pokemon
         if(hp > maxHp) {
             hp = maxHp;
         }
+    }
+
+    public static double getMultiplier(final Pokemon attacker, final Pokemon opponent) {
+        return multiplier.get(attacker.type).get(opponent.type);
     }
 
     private static void initializePokeTypeMultiplier(final Map<Pokedex.PokeType, Map<Pokedex.PokeType, Double>> multiplier) {

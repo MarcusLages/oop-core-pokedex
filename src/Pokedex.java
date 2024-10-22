@@ -11,8 +11,8 @@ public class Pokedex<T extends Pokemon> {
 
     public enum PokeType {
         FIRE("Fire"),
-        WATER("Water"),
-        GRASS("Grass");
+        GRASS("Grass"),
+        WATER("Water");
 
         public final String type;
 
@@ -21,6 +21,11 @@ public class Pokedex<T extends Pokemon> {
         }
 
         public String getType() {
+            return type;
+        }
+
+        @Override
+        public String toString() {
             return type;
         }
     }
@@ -73,7 +78,7 @@ public class Pokedex<T extends Pokemon> {
                 pokemon = it.next();
 
                 if(pokemon != null &&
-                        pokemon.getType().equals(type.getType())) {
+                        pokemon.getType().equals(type)) {
                     it.remove();
                 }
             }
@@ -140,7 +145,7 @@ public class Pokedex<T extends Pokemon> {
                 });
                 break;
             case PokeSorting.BY_TYPE:
-                Collections.sort(pokemons, Comparator.comparing(Pokemon::getType, String::compareToIgnoreCase));
+                Collections.sort(pokemons, Comparator.comparing(Pokemon::getType, Enum::compareTo));
                 break;
             default:
                 throw new IllegalArgumentException("Invalid sorting method.\n");
